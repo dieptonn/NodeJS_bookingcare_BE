@@ -22,5 +22,5 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "DoctorClinicSpecialty",
     }
   );
-  return Specialty;
+  return DoctorClinicSpecialty;
 };

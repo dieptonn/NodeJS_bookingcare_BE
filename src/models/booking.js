@@ -24,5 +24,5 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Booking",
     }
   );
-  return User;
+  return Booking;
 };
