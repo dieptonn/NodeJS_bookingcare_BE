@@ -4,6 +4,7 @@
   "description": "clone web voi hoidanIT",
   "main": "server.js",
   "scripts": {
+    "pretty": "prettier --single-quote --trailing-comma all --tab-width 4 --write src/**/*.{js,json,scss}",
     "start": "nodemon --exec ./node_modules/.bin/babel-node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/dieptonn/NodeJS_bookingcare_BE#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "1.20.2",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
@@ -35,6 +37,7 @@
     "@babel/preset-env": "7.21.5",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
+    "prettier": "2.8.8",
     "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0"
   }
