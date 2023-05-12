@@ -29,9 +29,47 @@ let postCRUD = async (req, res) => {
     return res.send('post crud');
 };
 
+let displayGetCRUD = async (req, res) => {
+    let data = await CRUDService.getAllUser();
+    console.log('-------------------------------');
+    console.log(data);
+    console.log('--------------------------------');
+
+    return res.render('displayCRUD', {
+        dataTable: data,
+    });
+};
+
+let editCRUD = async (req, res) => {
+    let userId = req.query.id;
+    if (userId) {
+        let userData = await CRUDService.getUserInforById(userId);
+        console.log('-------------------------------');
+        console.log(userData);
+        console.log('--------------------------------');
+        return res.render('editCRUD', {
+            userData: userData,
+        });
+    } else {
+        return res.send('user not found');
+    }
+    // return res.render('editCRUD')
+};
+
+let putCRUD = async (req, res) => {
+    let data = req.body;
+    await CRUDService.updateUserData(data);
+
+    // return res.send('updated');
+    return res.redirect('/get-crud');
+};
+
 module.exports = {
     getHomePage: getHomePage,
     getAboutPage: getAboutPage,
     getCRUD: getCRUD,
     postCRUD: postCRUD,
+    displayGetCRUD: displayGetCRUD,
+    editCRUD: editCRUD,
+    putCRUD: putCRUD,
 };
