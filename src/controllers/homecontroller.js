@@ -31,9 +31,9 @@ let postCRUD = async (req, res) => {
 
 let displayGetCRUD = async (req, res) => {
     let data = await CRUDService.getAllUser();
-    console.log('-------------------------------');
-    console.log(data);
-    console.log('--------------------------------');
+    // console.log('-------------------------------');
+    // console.log(data);
+    // console.log('--------------------------------');
 
     return res.render('displayCRUD', {
         dataTable: data,
@@ -44,9 +44,9 @@ let editCRUD = async (req, res) => {
     let userId = req.query.id;
     if (userId) {
         let userData = await CRUDService.getUserInforById(userId);
-        console.log('-------------------------------');
-        console.log(userData);
-        console.log('--------------------------------');
+        // console.log('-------------------------------');
+        // console.log(userData);
+        // console.log('--------------------------------');
         return res.render('editCRUD', {
             userData: userData,
         });
@@ -64,6 +64,16 @@ let putCRUD = async (req, res) => {
     return res.redirect('/get-crud');
 };
 
+let deleteCRUD = async (req, res) => {
+    let userId = req.query.id;
+    if (userId) {
+        await CRUDService.deleteUserById(userId);
+        return res.redirect('/get-crud');
+    } else {
+        return res.send('cannot delete user');
+    }
+};
+
 module.exports = {
     getHomePage: getHomePage,
     getAboutPage: getAboutPage,
@@ -72,4 +82,5 @@ module.exports = {
     displayGetCRUD: displayGetCRUD,
     editCRUD: editCRUD,
     putCRUD: putCRUD,
+    deleteCRUD: deleteCRUD,
 };
